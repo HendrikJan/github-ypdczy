@@ -1,6 +1,7 @@
 <template>
   <div>
-    Test: {{ config.testy }}
+    Test: {{ config.testy }}<br>
+    Blah: {{ config.blahy }}
   </div>
 </template>
 

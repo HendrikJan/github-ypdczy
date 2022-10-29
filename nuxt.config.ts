@@ -8,7 +8,8 @@ dotenv.config({path: "./xenv"})
 export default defineNuxtConfig({
 runtimeConfig : {
   public: {
-    testy: process.env.TEST 
+    testy: process.env.TEST,
+    blahy: process.env.BLAH,
   }
 }
 })
