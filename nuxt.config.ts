@@ -2,6 +2,7 @@ process.env.TEST = "Hellow"
 
 import * as dotenv  from "dotenv";
 
+dotenv.config({path: "./xenv"})
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
