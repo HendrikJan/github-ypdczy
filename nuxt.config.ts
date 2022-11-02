@@ -1,5 +1,6 @@
 process.env.TEST = "Hellow"
 
+import vuetify from 'vite-plugin-vuetify';
 import * as dotenv  from "dotenv";
 
 dotenv.config({path: "./xenv"})
