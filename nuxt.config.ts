@@ -7,6 +7,19 @@ dotenv.config({path: "./xenv"})
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
+  vite: {
+    // @ts-ignore
+    ssr: false,
+  },
+  modules: [
+    // @ts-ignore
+    async (options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) =>
+        config.plugins.push(vuetify())
+      );
+    },
+  ],
 runtimeConfig : {
   public: {
     testy: process.env.TEST,
