@@ -12,6 +12,8 @@
     "vuetify": "^3.0.0"
   },
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "@mdi/font": "^7.0.96",
+    "dotenv": "^16.0.3",
+    "vite-plugin-vuetify": "*"
   }
 }
