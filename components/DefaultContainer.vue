@@ -2,7 +2,10 @@
   <v-app>
     <v-app-bar class="my-app-bar" flat height="auto">
       <v-container class="py-0 fill-height">
-        <v-app-bar-title>TEST APP BAR TITLE</v-app-bar-title>
+        <v-app-bar-title>TAPP</v-app-bar-title>
+        <v-btn class="my-nav-btn" v-for="link in links">
+          {{ link.name }}
+        </v-btn>
       </v-container>
     </v-app-bar>
 
@@ -21,77 +24,45 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+
 const links = computed(() => [
   {
-    name: $i18n.t('Course coordinator'),
-    href: `/#!/courses-overview/${activeYear.value?.name}`,
-    visible: props.value.hasCourses && academicYears.value.length > 0,
+    name: t('Courses'),
+    href: `/#!/courses-overview/`,
   },
   {
-    name: $i18n.t('My Teaching Load'),
-    href: `/#!/courses-overview/${activeYear.value?.name}`,
-    visible: props.value.hasCourses && academicYears.value.length > 0,
+    name: t('Staff members'),
+    href: `/#!/staffmembers-overview/`,
   },
   {
-    name: $i18n.t('Courses'),
-    href: `/#!/courses-overview/${activeYear.value?.name}`,
-    visible:
-      props.value.readableCourseUnits.length > 0 || props.value.canReadAll,
+    name: t('SAP'),
+    href: `/#!/sap-overview/`,
   },
   {
-    name: $i18n.t('Staff members'),
-    href: `/#!/staffmembers-overview/${activeYear.value?.name}`,
-    visible:
-      props.value.readableStaffMemberUnits.length > 0 || props.value.canReadAll,
+    name: t('Osiris'),
+    href: `/#!/osiris-overview/`,
   },
   {
-    name: $i18n.t('SAP'),
-    href: `/#!/sap-overview/${activeYear.value?.name}`,
-    visible:
-      process.env.USE_SAP == 'true' &&
-      (props.value.readableStaffMemberUnits.length > 0 ||
-        props.value.canReadAll),
+    name: t('Reports'),
+    to: `/report?activeYear=/`,
   },
   {
-    name: $i18n.t('Osiris'),
-    href: `/#!/osiris-overview/${activeYear.value?.name}`,
-    visible:
-      props.value.canReadSomeUnit ||
-      props.value.canViewReports ||
-      props.value.canReadAll,
+    name: t('Appointments2'),
+    href: `/#!/appointments-overview/`,
   },
   {
-    name: $i18n.t('Reports'),
-    to: `/report?activeYear=/${activeYear.value?.name}`,
-    visible:
-      props.value.canReadAppointments ||
-      props.value.canReadSomeUnit ||
-      props.value.canViewReports ||
-      props.value.canReadAll,
+    name: t('Settings'),
+    href: `/#!/settings-overview/`,
   },
   {
-    name: $i18n.t('Appointments2'),
-    href: `/#!/appointments-overview/${activeYear.value?.name}`,
-    visible: props.value.canReadAppointments,
+    name: t('Accounts'),
+    href: `/#!/accounts-overview/`,
   },
   {
-    name: $i18n.t('Settings'),
-    href: `/#!/settings-overview/${activeYear.value?.name}`,
-    visible:
-      props.value.canReadAppointments ||
-      props.value.canReadSomeUnit ||
-      props.value.canReadAll,
-  },
-  {
-    name: $i18n.t('Accounts'),
-    href: `/#!/accounts-overview/${activeYear.value?.name}`,
-    visible:
-      props.value.readableStaffMemberUnits.length > 0 || props.value.canReadAll,
-  },
-  {
-    name: $i18n.t('Documentation'),
-    href: `/#!/documents-overview/${activeYear.value?.name}`,
-    visible: true,
+    name: t('Documentation'),
+    href: `/#!/documents-overview/`,
   },
 ]);
 </script>
