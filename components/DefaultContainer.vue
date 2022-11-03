@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar class="my-app-bar" flat height="auto">
+    <v-app-bar id="my-app-bar" class="my-app-bar" flat height="auto">
       <v-container class="py-0 fill-height">
         <v-app-bar-title>TAPP</v-app-bar-title>
         <v-btn class="my-nav-btn" v-for="link in links">
@@ -65,6 +65,37 @@ const links = computed(() => [
     href: `/#!/documents-overview/`,
   },
 ]);
+
+function updateMainTopMargin() {
+  const appBar = document.getElementById('my-app-bar');
+  if (appBar) {
+    const rect = appBar.getBoundingClientRect();
+    const myMain = document.getElementById('my-main');
+    if (myMain) {
+      myMain.style.marginTop = rect.height + 'px';
+    }
+  }
+}
+
+const resizeObserver = new ResizeObserver(function (entries) {
+  updateMainTopMargin();
+});
+
+onMounted(updateMainTopMargin);
+onMounted(() => {
+  try {
+    resizeObserver.observe(document.getElementById('my-app-bar'));
+  } catch (err) {
+    console.log('Could not observe');
+  }
+});
+onUnmounted(() => {
+  try {
+    resizeObserver.unobserve(document.getElementById('my-app-bar'));
+  } catch (err) {
+    console.log('Could not unobserve');
+  }
+});
 </script>
 
 <style scoped lang="scss">
