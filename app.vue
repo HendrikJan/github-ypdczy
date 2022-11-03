@@ -1,8 +1,9 @@
 <template>
   <div>
-    <DefaultContainer></DefaultContainer>
-    Test: {{ config.testy }}<br />
-    Blah: {{ config.blahy }}
+    <DefaultContainer>
+      Test: {{ config.testy }}<br />
+      Blah: {{ config.blahy }}
+    </DefaultContainer>
   </div>
 </template>
 
