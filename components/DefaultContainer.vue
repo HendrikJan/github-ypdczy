@@ -99,6 +99,8 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+@import '../variables';
+
 .my-app-bar {
   border-bottom: 1px solid #dddddd !important;
   min-height: 51px;
@@ -106,5 +108,9 @@ onUnmounted(() => {
 
 .my-app-bar .v-toolbar__content {
   height: auto;
+}
+
+.my-nav-btn {
+  color: $uu-green;
 }
 </style>

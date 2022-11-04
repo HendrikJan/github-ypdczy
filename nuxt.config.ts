@@ -42,4 +42,5 @@ export default defineNuxtConfig({
       blahy: process.env.BLAH,
     },
   },
+  ssr: false,
 });
